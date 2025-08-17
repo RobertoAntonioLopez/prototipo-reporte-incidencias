@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte de Incidencias – Prototipo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Reporte de Incidencias</div>
+      <nav class="nav">
+        <button class="link" data-view="view-login">Login</button
+        ><button class="link" data-view="view-register">Registro</button
+        ><button class="link" data-view="view-dashboard">Panel</button
+        ><button class="link" data-view="view-report">Reportar</button
+        ><button class="link" data-view="view-list">Incidencias</button>
+      </nav>
+    </header>
+    <main id="app">
+      <section id="view-login" class="view active">
+        <h1>Iniciar sesión</h1>
+        <form id="formLogin" class="card">
+          <label
+            >Correo<input
+              type="email"
+              id="emailLogin"
+              placeholder="tu@correo.com"
+              required /></label
+          ><label
+            >Contraseña<input
+              type="password"
+              id="passLogin"
+              placeholder="********"
+              required
+              minlength="6" /></label
+          ><button type="submit" class="btn">Entrar</button>
+          <p class="muted">
+            ¿No tienes cuenta?
+            <a href="#" data-view="view-register" class="goto">Regístrate</a>
+          </p>
+          <div id="loginMsg" class="msg"></div>
+        </form>
+      </section>
+      <section id="view-register" class="view">
+        <h1>Crear cuenta</h1>
+        <form id="formRegister" class="card">
+          <label
+            >Nombre completo<input
+              type="text"
+              id="nameReg"
+              placeholder="Tu nombre"
+              required /></label
+          ><label
+            >Correo<input
+              type="email"
+              id="emailReg"
+              placeholder="tu@correo.com"
+              required /></label
+          ><label
+            >Contraseña<input
+              type="password"
+              id="passReg"
+              placeholder="mín. 6 caracteres"
+              required
+              minlength="6" /></label
+          ><button type="submit" class="btn">Registrarme</button>
+          <div id="regMsg" class="msg"></div>
+        </form>
+      </section>
+      <section id="view-dashboard" class="view">
+        <h1>Panel de usuario</h1>
+        <div class="grid">
+          <div class="card">
+            <h3>Resumen</h3>
+            <ul class="stats">
+              <li>
+                <strong id="stat24h">12</strong><span>Incidencias (24h)</span>
+              </li>
+              <li>
+                <strong id="statTotal">238</strong
+                ><span>Total registradas</span>
+              </li>
+              <li>
+                <strong id="statAbiertas">19</strong><span>Pendientes</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Mapa (mock)</h3>
+            <div class="map-placeholder">Mapa interactivo próximamente</div>
+          </div>
+        </div>
+      </section>
+      <section id="view-report" class="view">
+        <h1>Reportar incidencia</h1>
+        <form id="formReport" class="card">
+          <div class="grid2">
+            <label
+              >Título<input
+                type="text"
+                id="titulo"
+                required
+                maxlength="140" /></label
+            ><label
+              >Fecha<input type="datetime-local" id="fecha" required /></label
+            ><label
+              >Tipo<select id="tipo" required>
+                <option value="">Seleccione…</option>
+                <option>Accidente</option>
+                <option>Pelea</option>
+                <option>Robo</option>
+                <option>Desastre</option>
+              </select></label
+            ><label
+              >Provincia<input
+                type="text"
+                id="provincia"
+                placeholder="Ej: Distrito Nacional"
+                required /></label
+            ><label
+              >Municipio<input
+                type="text"
+                id="municipio"
+                placeholder="Ej: Santo Domingo"
+                required /></label
+            ><label>Barrio (opcional)<input type="text" id="barrio" /></label
+            ><label
+              >Latitud (opcional)<input
+                type="number"
+                step="0.000001"
+                id="lat" /></label
+            ><label
+              >Longitud (opcional)<input type="number" step="0.000001" id="lng"
+            /></label>
+          </div>
+          <label
+            >Descripción<textarea
+              id="descripcion"
+              rows="4"
+              placeholder="Describe lo ocurrido…"
+              required
+            ></textarea>
+          </label>
+          <div class="grid2">
+            <label
+              >Muertos<input
+                type="number"
+                id="muertos"
+                min="0"
+                value="0"
+                required /></label
+            ><label
+              >Heridos<input
+                type="number"
+                id="heridos"
+                min="0"
+                value="0"
+                required /></label
+            ><label
+              >Pérdida estimada (RD$)<input
+                type="number"
+                id="perdida"
+                min="0"
+                step="0.01"
+                value="0" /></label
+            ><label
+              >Foto/Enlace (mock)<input
+                type="url"
+                id="media"
+                placeholder="URL a imagen/video"
+            /></label>
+          </div>
+          <button class="btn" type="submit">Guardar (mock)</button>
+          <div id="reportMsg" class="msg"></div>
+        </form>
+      </section>
+      <section id="view-list" class="view">
+        <h1>Incidencias (mock)</h1>
+        <div id="cards" class="cards"></div>
+        <dialog id="dlg">
+          <article>
+            <h3 id="dlgTitle">Título</h3>
+            <p id="dlgBody">Descripción…</p>
+            <button id="dlgClose" class="btn outline">Cerrar</button>
+          </article>
+        </dialog>
+      </section>
+    </main>
+    <footer class="footer">
+      <span
+        >Prototipo estático • Sin backend • Para fines de navegación y
+        diseño</span
+      >
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
